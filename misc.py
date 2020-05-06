@@ -1,14 +1,13 @@
 """Various tools
 """
 
+import numpy as np
 
 def aprint(A):
     """
-    Improved array/matrix printing compared to numpy defaults.
+    Array summary.
+
     TODO: Adjust edgeitems depending on int/float.
-    TODO: Adjust threshold depending on array/matrix.
-    Use a common exponent when possible (as in Matlab).
-    Print stats.
     """
     shape = A.shape
     opts  = np.get_printoptions()
@@ -31,6 +30,7 @@ def aprint(A):
             expo = int(np.log10(mina))
         elif maxa < 10**-(p-3):
             expo = int(np.log10(maxa))-1
+
     print_bold("array(")
     if expo==1:
         print(str(A))
