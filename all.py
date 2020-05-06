@@ -1,7 +1,7 @@
 """Import *contents* of all submodules.
 
 This is a dynamic (run-time) versions of this:
-from .base import *
+from .std  import *
 from .misc import *
 from .math import *
 ...
