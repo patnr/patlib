@@ -51,26 +51,29 @@ def aprint(A):
     print("min(abs), max(abs):  {:11g}, {:11g}".format(mina, maxa))
 
 
-import pyperclip
-def paste_array(dtype=float, sep=" "):
-    """Paste array from clipboard (plaintext) into python.
+try:
+    import pyperclip
+    def paste_array(dtype=float, sep=" "):
+        """Paste array from clipboard (plaintext) into python.
 
-    NB: only works on Matlab matrices of size (1,length).
-    But it should be easy to adapt this function for other shapes.
+        NB: only works on Matlab matrices of size (1,length).
+        But it should be easy to adapt this function for other shapes.
 
-    In Matlab, to copy into clipboard, use:
-    (Matlab)>>> clipboard('copy',myMatrix)
-    """
+        In Matlab, to copy into clipboard, use:
+        (Matlab)>>> clipboard('copy',myMatrix)
+        """
 
-    # Grab from clipboard
-    d = pyperclip.paste()[1:-1]
+        # Grab from clipboard
+        d = pyperclip.paste()[1:-1]
 
-    # Detect and trim brackets
-    i0 =  1 if d[ 0]=='[' else None
-    i1 = -1 if d[-1]==']' else None
+        # Detect and trim brackets
+        i0 =  1 if d[ 0]=='[' else None
+        i1 = -1 if d[-1]==']' else None
 
-    d = np.fromstring(d, dtype=dtype, sep=sep)
-    return d
+        d = np.fromstring(d, dtype=dtype, sep=sep)
+        return d
+except ImportError:
+    pass
 
 
 import json
