@@ -48,61 +48,23 @@ def aprint(A):
     print("min(abs), max(abs):  {:11g}, {:11g}".format(mina, maxa))
 
 
+import pyperclip
+def paste_array(dtype=float, sep=" "):
+    """Paste array from clipboard (plaintext) into python.
 
-# stackoverflow.com/a/11103301
-def on_xlim_changed(ax):
+    NB: only works on Matlab matrices of size (1,length).
+    But it should be easy to adapt this function for other shapes.
+
+    In Matlab, to copy into clipboard, use:
+    (Matlab)>>> clipboard('copy',myMatrix)
     """
-    Autoscale y-axis for subplots with sharex=True.
-    
-    Usage:
-    for ax in fig.axes:
-        ax.callbacks.connect('xlim_changed', on_xlim_changed)
-    """
-    xlim = ax.get_xlim()
-    for a in ax.figure.axes:
-            # shortcuts: last avoids n**2 behavior when each axis fires event
-            if a is ax or len(a.lines) == 0 or getattr(a, 'xlim', None) == xlim:
-                    continue
 
-            ylim = np.inf, -np.inf
-            for l in a.lines:
-                    x, y = l.get_data()
-                    # faster, but assumes that x is sorted
-                    start, stop = np.searchsorted(x, xlim)
-                    yc = y[max(start-1,0):(stop+1)]
-                    ylim = min(ylim[0], np.nanmin(yc)), max(ylim[1], np.nanmax(yc))
+    # Grab from clipboard
+    d = pyperclip.paste()[1:-1]
 
-            # TODO: update limits from Patches, Texts, Collections, ...
+    # Detect and trim brackets
+    i0 =  1 if d[ 0]=='[' else None
+    i1 = -1 if d[-1]==']' else None
 
-            # x axis: emit=False avoids infinite loop
-            a.set_xlim(xlim, emit=False)
-
-            # y axis: set dataLim, make sure that autoscale in 'y' is on 
-            corners = (xlim[0], ylim[0]), (xlim[1], ylim[1])
-            a.dataLim.update_from_data_xy(corners, ignore=True, updatex=False)
-            a.autoscale(enable=True, axis='y')
-            # cache xlim to mark 'a' as treated
-            a.xlim = xlim
-
-
-
-# import pyperclip
-# def paste_array(dtype=float, sep=" "):
-    # """Paste array from clipboard (plaintext) into python.
-
-    # NB: only works on Matlab matrices of size (1,length).
-    # But it should be easy to adapt this function for other shapes.
-
-    # In Matlab, to copy into clipboard, use:
-    # (Matlab)>>> clipboard('copy',myMatrix)
-    # """
-
-    # # Grab from clipboard
-    # d = pyperclip.paste()[1:-1]
-
-    # # Detect and trim brackets
-    # i0 =    1 if d[ 0]=='[' else None
-    # i1 = -1 if d[-1]==']' else None
-
-    # d = np.fromstring(d, dtype=dtype, sep=sep)
-    # return d
+    d = np.fromstring(d, dtype=dtype, sep=sep)
+    return d
