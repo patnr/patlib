@@ -4,7 +4,6 @@
 
 import numpy as np
 import scipy as sp
-import numpy.random
 import scipy.linalg as sla
 import numpy.linalg as nla
 import scipy.stats as ss
@@ -28,3 +27,10 @@ from numpy import \
 np.set_printoptions(suppress=True,threshold=200,precision=6)
 # Instead of set_np_linewidth, just let terminal do wrapping:
 np.set_printoptions(linewidth=9999)
+
+
+# NB: These are not equal to np.random.rand{,s},
+#     which follow Matlab syntax.
+# NB: Subject to change.
+rand  = lambda shape: np.random.uniform(size=shape)
+randn = np.random.standard_normal

@@ -1,10 +1,12 @@
 """Various tools
 """
-
 import numpy as np
 
 # TODO: include Bunch and NestedPrint?
 # TODO: implement sort_keys choice
+
+try: from see import see
+except ImportError: pass
 
 def aprint(A):
     """
@@ -20,8 +22,9 @@ def aprint(A):
         #nitems = int((lw - 5)/(opts['precision'] + 1)) - 1
         #np.set_printoptions(linewidth=lw,edgeitems=3,threshold=nitems)
 
-    mina = np.abs(A).min()
-    maxa = np.abs(A).max()
+    AA = np.abs(A)
+    mina = AA.min()
+    maxa = AA.max()
 
     print_bold = lambda s: print('\033[94m', s, "\033[0m")
 
@@ -42,13 +45,22 @@ def aprint(A):
         print(str(A / 10**expo))
         print_bold(") * 1e" + str(expo))
 
+    #
+    ind2sub = lambda ind: np.unravel_index(ind, A.shape)
+    min_sub  = ind2sub(np.argmin(A))
+    max_sub  = ind2sub(np.argmax(A))
+    amin_sub = ind2sub(np.argmin(AA))
+    amax_sub = ind2sub(np.argmax(AA))
+
     # Stats
-    print("shape             : ", shape)
-    print("sparsity          :  {:d}/{:d}".format(A.size-np.count_nonzero(A),A.size))
-    print("mean              :  {:11g}"                .format(A.mean()))
-    print("std               :  {:11g}"                .format(A.std(ddof=1)))
-    print("min, max          :  {:11g}, {:11g}".format(A.min(), A.max()))
-    print("min(abs), max(abs):  {:11g}, {:11g}".format(mina, maxa))
+    print("shape     : ", shape)
+    print("sparsity  :  {:d}/{:d}".format(A.size-np.count_nonzero(A),A.size))
+    print("mean      :  {:11g}".format(A.mean()))
+    print("std       :  {:11g}".format(A.std(ddof=1)))
+    print("min  (ind):  {:11g} {:}".format(A[min_sub], min_sub))
+    print("max  (ind):  {:11g} {:}".format(A[max_sub], max_sub))
+    print("amin (ind):  {:11g} {:}".format(A[amin_sub], amin_sub))
+    print("amax (ind):  {:11g} {:}".format(A[amax_sub], amax_sub))
 
 
 try:
