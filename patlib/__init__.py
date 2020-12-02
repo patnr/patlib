@@ -7,4 +7,4 @@ It may be loaded with wildcard, eg:
     - from pylib.math import * # won't execute the other submodules
 """
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
