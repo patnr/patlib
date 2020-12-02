@@ -35,14 +35,10 @@ setuptools.setup(
     author_email="patrick.n.raanes@gmail.com",
     description=long_description,
 
-    python_requires='>=3.7',
+    python_requires='>=3.6',
 
-    # TODO: this has not been checked at all
-    install_requires=[
-        'scipy>=1.1',
-        'ipython>=5.1',
-        'matplotlib~=3.1',
-    ],
+    # TODO: dependencies
+    install_requires=[],
 
     # Detailed meta
     classifiers=[
