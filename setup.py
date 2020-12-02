@@ -40,6 +40,8 @@ setuptools.setup(
     # TODO: dependencies
     install_requires=[],
 
+    packages=["patlib"],
+
     # Detailed meta
     classifiers=[
         'Development Status :: 3 - Alpha',
