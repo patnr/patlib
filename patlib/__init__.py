@@ -6,3 +6,5 @@ It may be loaded with wildcard, eg:
     - from pylib.all import *  # executes all submodules
     - from pylib.math import * # won't execute the other submodules
 """
+
+__version__ = "0.1.1"
