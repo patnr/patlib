@@ -1,14 +1,18 @@
 """Import *contents* of all submodules.
 
 This is a dynamic (run-time) versions of this:
-from .std  import *
-from .misc import *
-from .math import *
-...
 
-Don't want to put this in pylib/__init__.py,
-(even if just using __all__, which won't yield submodule contents),
-coz then I cannot selectively import a submodule (eg pylib.math.py)
+    from .std  import *
+    from .misc import *
+    from .math import *
+    ...
+
+Similar constructions can be found e.g. in:
+`scipy/linalg/__init__.py`
+
+Don't want to put this in `pylib/__init__.py`,
+(even if just using `__all__`, which won't yield submodule contents),
+coz then I cannot selectively import a submodule (eg `pylib.math`)
 without executing the others.
 """
 
@@ -16,7 +20,7 @@ without executing the others.
 from pathlib import Path as _Path # mangle to avoid cleaning up std.py:Path below.
 
 def import_contents(f):
-    """https://stackoverflow.com/a/41991139/38281"""
+    """<https://stackoverflow.com/a/41991139/38281>"""
 
     module = __import__(__package__+"."+f.stem, fromlist=['*'])
     # module = import_module("."+f.stem, __package__)
