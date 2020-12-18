@@ -98,3 +98,76 @@ def sub_run(*args, check=True, capture_output=True, text=True, **kwargs):
 
     if capture_output:
         return x.stdout
+
+
+
+@contextlib.contextmanager
+def set_tmp(obj, attr, val):
+    """Temporarily set an attribute.
+
+    Example:
+    >>> class A:
+    >>>     pass
+    >>> a = A()
+    >>> a.x = 1  # Try deleting this line
+    >>> with set_tmp(a,"x","TEMPVAL"):
+    >>>     print(a.x)
+    >>> print(a.x)
+
+    Based on
+    http://code.activestate.com/recipes/577089/
+    """
+
+    was_there = False
+    tmp = None
+    if hasattr(obj, attr):
+        try:
+            if attr in obj.__dict__:
+                was_there = True
+        except AttributeError:
+            if attr in obj.__slots__:
+                was_there = True
+        if was_there:
+            tmp = getattr(obj, attr)
+    setattr(obj, attr, val)
+
+    try:
+        yield  # was_there, tmp
+    except BaseException:
+        raise
+    finally:
+        if not was_there:
+            delattr(obj, attr)
+        else:
+            setattr(obj, attr, tmp)
+
+
+# https://stackoverflow.com/a/2669120
+def sorted_human(lst):
+    """Sort the given iterable in the way that humans expect."""
+    def convert(text): return int(text) if text.isdigit() else text
+    def alphanum_key(key): return [convert(c) for c in re.split('([0-9]+)', key)]
+    return sorted(lst, key = alphanum_key)
+
+
+def find_1st_ind(xx):
+    try:
+        return next(k for k, x in enumerate(xx) if x)
+    except StopIteration:
+        return None
+
+
+def all_but_1_is_None(*args):
+    "Check if only 1 of the items in list are Truthy"
+    return sum(x is not None for x in args) == 1
+
+
+def do_once(fun):
+    def new(*args, **kwargs):
+        if new.already_done:
+            return None  # do nothing
+        else:
+            new.already_done = True
+            return fun(*args, **kwargs)
+    new.already_done = False
+    return new
