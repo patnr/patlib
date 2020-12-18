@@ -60,12 +60,15 @@ def rewrite(fname):
 
 
 class Timer():
-    """Timer as contextmanager.
+    """Timer context manager.
 
-    Example:
+    Example::
+
     >>> with Timer('<description>'):
-    >>>   do_stuff()
+    >>>     time.sleep(1.23)
+    [<description>] Elapsed: 1.23
     """
+
     def __init__(self, name=None):
         self.name = name
 
@@ -73,9 +76,9 @@ class Timer():
         self.tstart = time.time()
 
     def __exit__(self, type, value, traceback):
-        #pass # Turn off timer messages
+        # pass # Turn off timer messages
         if self.name:
-            print('[%s]' % self.name, end='')
+            print('[%s]' % self.name, end=' ')
         print('Elapsed: %s' % (time.time() - self.tstart))
 
 
