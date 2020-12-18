@@ -157,11 +157,6 @@ def find_1st_ind(xx):
         return None
 
 
-def all_but_1_is_None(*args):
-    "Check if only 1 of the items in list are Truthy"
-    return sum(x is not None for x in args) == 1
-
-
 def do_once(fun):
     def new(*args, **kwargs):
         if new.already_done:
