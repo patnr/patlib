@@ -15,19 +15,14 @@ readme = "README.md"
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
-#pytest-cov coverage pytest-sugar pytest-benchmark pytest-clarity pytest-xdist
-
-flake8 = "*"
-flakehell = "*"
-# flake8-docstrings, flake8-bugbear, flake8-comprehensions, flake8-isort
-
 line_profiler = "*"
-pre-commit = "*"
-ipython = "*"
 ipdb = "*"
 pdbpp = "*"
 pudb = "*"
+ipython = "*"
+jedi = "<0.18" # ipython/issues/12740
+
+#pre-commit = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
