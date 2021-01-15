@@ -2,7 +2,7 @@
 name = "appnope"
 version = "0.1.2"
 description = "Disable App Nap on macOS >= 10.9"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -10,7 +10,7 @@ python-versions = "*"
 name = "backcall"
 version = "0.2.0"
 description = "Specifications for callback functions passed in to an API"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -18,7 +18,7 @@ python-versions = "*"
 name = "colorama"
 version = "0.4.4"
 description = "Cross-platform colored terminal text."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -26,7 +26,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 name = "decorator"
 version = "4.4.2"
 description = "Decorators for Humans"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 
@@ -34,7 +34,7 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 name = "fancycompleter"
 version = "0.9.1"
 description = "colorful TAB completion for Python prompt"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -46,7 +46,7 @@ pyrepl = ">=0.8.2"
 name = "ipdb"
 version = "0.13.4"
 description = "IPython-enabled pdb"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7"
 
@@ -57,7 +57,7 @@ ipython = {version = ">=5.1.0", markers = "python_version >= \"3.4\""}
 name = "ipython"
 version = "7.19.0"
 description = "IPython: Productive Interactive Computing"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -88,7 +88,7 @@ test = ["nose (>=0.10.1)", "requests", "testpath", "pygments", "nbformat", "ipyk
 name = "ipython-genutils"
 version = "0.2.0"
 description = "Vestigial utilities from IPython"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -96,7 +96,7 @@ python-versions = "*"
 name = "jedi"
 version = "0.17.2"
 description = "An autocompletion tool for Python that can be used for text editors."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -111,7 +111,7 @@ testing = ["Django (<3.1)", "colorama", "docopt", "pytest (>=3.9.0,<5.0.0)"]
 name = "line-profiler"
 version = "3.1.0"
 description = "Line-by-line profiler."
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -127,7 +127,7 @@ tests = ["pytest", "pytest-cov", "coverage", "codecov", "ubelt"]
 name = "parso"
 version = "0.7.1"
 description = "A Python Parser"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
@@ -138,7 +138,7 @@ testing = ["docopt", "pytest (>=3.0.7)"]
 name = "pdbpp"
 version = "0.10.2"
 description = "pdb++, a drop-in replacement for pdb"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -155,7 +155,7 @@ testing = ["funcsigs", "pytest"]
 name = "pexpect"
 version = "4.8.0"
 description = "Pexpect allows easy control of interactive console applications."
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -166,7 +166,7 @@ ptyprocess = ">=0.5"
 name = "pickleshare"
 version = "0.7.5"
 description = "Tiny 'shelve'-like database with concurrency support"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -174,7 +174,7 @@ python-versions = "*"
 name = "prompt-toolkit"
 version = "3.0.10"
 description = "Library for building powerful interactive command lines in Python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.1"
 
@@ -185,7 +185,7 @@ wcwidth = "*"
 name = "ptyprocess"
 version = "0.7.0"
 description = "Run a subprocess in a pseudo terminal"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -193,7 +193,7 @@ python-versions = "*"
 name = "pudb"
 version = "2020.1"
 description = "A full-screen, console-based Python debugger"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "~=3.6"
 
@@ -205,7 +205,7 @@ urwid = ">=1.1.1"
 name = "pygments"
 version = "2.7.4"
 description = "Pygments is a syntax highlighting package written in Python."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.5"
 
@@ -213,7 +213,7 @@ python-versions = ">=3.5"
 name = "pyreadline"
 version = "2.1"
 description = "A python implmementation of GNU readline."
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -221,7 +221,7 @@ python-versions = "*"
 name = "pyrepl"
 version = "0.9.0"
 description = "A library for building flexible command line interfaces"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -229,7 +229,7 @@ python-versions = "*"
 name = "traitlets"
 version = "5.0.5"
 description = "Traitlets Python configuration system"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -243,7 +243,7 @@ test = ["pytest"]
 name = "urwid"
 version = "2.1.2"
 description = "A full-featured console (xterm et al.) user interface library"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -251,7 +251,7 @@ python-versions = "*"
 name = "wcwidth"
 version = "0.2.5"
 description = "Measures the displayed width of unicode strings in a terminal"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -259,14 +259,14 @@ python-versions = "*"
 name = "wmctrl"
 version = "0.3"
 description = "A tool to programmatically control windows inside X"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "355a8e9ae113cd470969fb35110bbf7a07d64515f25d568b7e19abdb338d6ef5"
+content-hash = "a3a33a5eee2d46cdac6bec63084ab4931959cbfb441bd652a12bec5d32e66569"
 
 [metadata.files]
 appnope = [
