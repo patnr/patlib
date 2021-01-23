@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "patlib"
-version = "0.2.3"
+version = "0.2.4"
 description = "A collection of tools developed in conjunction with DAPPER."
 license = "MIT"
 authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]
