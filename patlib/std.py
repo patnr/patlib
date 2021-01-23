@@ -15,11 +15,12 @@ import warnings
 import contextlib
 import subprocess
 
-# Profiling
+# Profiling, via `(bash)$ kernprof -l -v myprog.py > profile.txt`
+# for any function that have been decorated with @profile.
 try:
-    profile = builtins.profile     # will exists if launched via kernprof
+    profile = builtins.profile  # type: ignore
 except AttributeError:
-    def profile(func): return func # provide a pass-through version.
+    def profile(func): return func
 
 
 @contextlib.contextmanager
