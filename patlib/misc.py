@@ -51,16 +51,16 @@ def aprint(A):
     max_sub  = ind2sub(np.argmax(A))
     amin_sub = ind2sub(np.argmin(AA))
     amax_sub = ind2sub(np.argmax(AA))
+    mins = A[min_sub], min_sub, A[amin_sub], amin_sub
+    maxs = A[max_sub], max_sub, A[amax_sub], amax_sub
 
     # Stats
-    print("shape     : ", shape)
-    print("sparsity  :  {:d}/{:d}".format(A.size-np.count_nonzero(A),A.size))
-    print("mean      :  {:11g}".format(A.mean()))
-    print("std       :  {:11g}".format(A.std(ddof=1)))
-    print("min  (ind):  {:11g} {:}".format(A[min_sub], min_sub))
-    print("max  (ind):  {:11g} {:}".format(A[max_sub], max_sub))
-    print("amin (ind):  {:11g} {:}".format(A[amin_sub], amin_sub))
-    print("amax (ind):  {:11g} {:}".format(A[amax_sub], amax_sub))
+    print("shape    :", shape)
+    print("sparsity : {:d}/{:d}".format(A.size-np.count_nonzero(A),A.size))
+    print("mean     : {: 10.4g}".format(A.mean()))
+    print("std      : {: 10.4g}".format(A.std(ddof=1)))
+    print("min (ij) : {: 10.4g} {!r:7},   amin (ij): {: 10.4g} {!r:7}".format(*mins))
+    print("max (ij) : {: 10.4g} {!r:7},   amax (ij): {: 10.4g} {!r:7}".format(*maxs))
 
 
 try:
