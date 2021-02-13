@@ -14,6 +14,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.7"
 
+# Minimal tools
 line_profiler = "*"
 ipdb = "*"
 # This pdbpp rev includes bugfix to pdbpp/issues/408.
@@ -23,9 +24,27 @@ pudb = "*"
 ipython = "*"
 jedi = "<0.18" # ipython/issues/12740
 
+# math
+matplotlib = { version = "*"       , optional = true }
+pyqt5      = { version = "*"       , optional = true }
+scipy      = { version = "*"       , optional = true }
+numpy      = { version = "^1.20.1" , optional = true } # 1.20 has stubs
+
+# misc
+pyyaml   = { version = "*", optional = true }
+toml     = { version = "*", optional = true }
+tabulate = { version = "*", optional = true }
+tqdm     = { version = "*", optional = true }
+
+#jupyter  = { version = "*", optional = true }
+
 [tool.poetry.dev-dependencies]
 
 #pre-commit = "*"
+
+[tool.poetry.extras]
+math = ["matplotlib", "pyqt5", "scipy", "numpy"]
+misc = ["pyyaml", "toml", "tabulate", "tqdm"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
