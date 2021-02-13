@@ -1,7 +1,4 @@
-"""Commonly used math tools.
-"""
-
-
+"""Provision commonly used math tools."""
 import numpy as np
 import numpy.random as rnd
 import scipy as sp
