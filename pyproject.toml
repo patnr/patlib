@@ -18,7 +18,7 @@ line_profiler = "*"
 ipdb = "*"
 # This pdbpp rev includes bugfix to pdbpp/issues/408.
 # As of Jan 2021, no release exists containing this bugfix.
-pdbpp = { git = "https://github.com/pdbpp/pdbpp.git", rev = "b62a338" }
+#pdbpp = { git = "https://github.com/pdbpp/pdbpp.git", rev = "b62a338" }
 pudb = "*"
 ipython = "*"
 jedi = "<0.18" # ipython/issues/12740
