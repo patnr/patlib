@@ -13,16 +13,16 @@ from numpy.linalg import eig
 # eig() of scipy.linalg necessitates using np.real_if_close().
 from scipy.linalg import sqrtm, inv, eigh
 
-from numpy import \
-    pi, nan, \
-    log, log10, exp, sin, cos, tan, \
-    sqrt, floor, ceil, \
-    mean, prod, \
-    diff, cumsum, \
-    array, asarray, asmatrix, \
-    linspace, arange, reshape, \
-    eye, zeros, ones, diag, trace \
-    # Don't shadow builtins: sum, max, abs, round, pow
+# Don't shadow builtins: sum, max, abs, round, pow
+from numpy import (
+    pi, nan,
+    floor, ceil,
+    sqrt, log, log10, exp, sin, cos, tan,
+    mean, prod, diff, cumsum,
+    array, asarray, asmatrix,
+    linspace, arange, reshape,
+    eye, zeros, ones, diag, trace
+)
 
 np.set_printoptions(
     precision=6,    # shorten from 8
