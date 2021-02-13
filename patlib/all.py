@@ -7,12 +7,9 @@ This is a dynamic (run-time) versions of this:
     from .math import *
     ...
 
-Similar constructions can be found e.g. in:
-`scipy/linalg/__init__.py`
-
-Don't want to put this in `pylib/__init__.py`,
+Don't want to put this in `patlib/__init__.py`,
 (even if just using `__all__`, which won't yield submodule contents),
-coz then I cannot selectively import a submodule (eg `pylib.math`)
+coz then I cannot selectively import a submodule (eg `patlib.math`)
 without executing the others.
 """
 
@@ -35,11 +32,8 @@ def import_contents(f):
     globals().update({k: getattr(module, k) for k in keys})
 
 # https://stackoverflow.com/a/60861023
-for f in _Path(__file__).parent.glob("*.py"):
-    if f!=_Path(__file__) and not f.stem.startswith("_"):
-        import_contents(f)
+for _file in _Path(__file__).parent.glob("*.py"):
+    if _file!=_Path(__file__) and not _file.stem.startswith("_"):
+        import_contents(_file)
 # Recursive solution (if that's ever needed):
 # https://stackoverflow.com/q/3365740
-
-# Clean up.
-del _Path, f
