@@ -24,6 +24,12 @@ from numpy import \
     eye, zeros, ones, diag, trace \
     # Don't shadow builtins: sum, max, abs, round, pow
 
-np.set_printoptions(suppress=True,threshold=200,precision=6)
-# Instead of set_np_linewidth, just let terminal do wrapping:
+np.set_printoptions(
+    precision=6,    # shorten from 8
+    threshold=200,  # max total
+    suppress=True,  # don't use science notation, coz occurs to much.
+                    # NB: array([0.1e-precision]) prints as 0
+)
+# Just let terminal do wrapping. This is uglier,
+# but it's hard to update lw automatically upon term resize. 
 np.set_printoptions(linewidth=9999)
