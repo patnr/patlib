@@ -1,10 +1,10 @@
-"""Modules from standard lib.
-"""
+"""Tools that go with the standard lib."""
 
 import sys
 import os
 from pathlib import Path
 import json
+import logging
 import time
 import re
 # import dataclasses as dcs
@@ -81,6 +81,57 @@ class Timer():
         if self.name:
             print('[%s]' % self.name, end=' ')
         print('Elapsed: %s' % (time.time() - self.tstart))
+
+
+def create_logger(name,
+                  screen_level=logging.INFO,
+                  file_level=logging.DEBUG,
+                  filename="mylog", mode="w"):
+    """Create logger (this is surprisingly complicated).
+
+    NB: Changing the parameters only works at start-up.
+
+    Note: if running in IPython, log messages get appended,
+    even when `mode` is "w".
+
+    - Log-levels above `scree_level` get printed to the terminal.
+    - Other messages to to the file `filename`.
+    - `NOTSET` messages get passed to the root level,
+      and discarded (unless the root level logger is instantiated).
+
+    [Ref](https://stackoverflow.com/a/29087645/38281)
+
+    Example:
+    >>> logger = create_logger(__name__)
+    >>> logger.log(logging.DEBUG, "Debug message")
+    >>> logger.info("Info message")
+    """
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
+
+    # create file handler which logs even debug messages
+    fh = logging.FileHandler(filename, mode)
+    fh.setLevel(logging.DEBUG)
+
+    # create console handler with a higher log level
+    ch = logging.StreamHandler(stream=sys.stdout)
+    ch.setLevel(screen_level)
+
+    # create formatter and add it to the handlers
+    formatter = logging.Formatter(
+        '[%(asctime)s] %(filename)20s:%(lineno)-4s '
+        '%(levelname)8s: %(message)s ', datefmt='%H:%M:%S')
+    fh.setFormatter(formatter)
+    ch.setFormatter(formatter)
+
+    # If called multiple times (eg in the same IPython session)
+    # then the messages will duplicate, unless we check this
+    # https://stackoverflow.com/a/17745953/38281
+    if not logger.hasHandlers():
+        logger.addHandler(ch)
+        logger.addHandler(fh)
+
+    return logger
 
 
 def sub_run(*args, check=True, capture_output=True, text=True, **kwargs):
