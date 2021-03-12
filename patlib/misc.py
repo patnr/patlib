@@ -5,9 +5,6 @@ import numpy as np
 # TODO: include Bunch and NestedPrint?
 # TODO: implement sort_keys choice
 
-try: from see import see
-except ImportError: pass
-
 def aprint(A):
     """
     Array summary.
