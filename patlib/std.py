@@ -213,11 +213,16 @@ def find_1st_ind(xx):
 
 
 def do_once(fun):
+    """Decorator to function to tell it to only run once.
+
+    NB: If you want to print/log messages, but only once,
+    use the stdlib warnings module instead.
+    """
     def new(*args, **kwargs):
-        if new.already_done:
+        if new._ALREADY_DONE:
             return None  # do nothing
         else:
-            new.already_done = True
+            new._ALREADY_DONE = True
             return fun(*args, **kwargs)
-    new.already_done = False
+    new._ALREADY_DONE = False
     return new
