@@ -1,12 +1,12 @@
 """Provision commonly used math tools."""
 import numpy as np
 import numpy.random as rnd
-import scipy as sp
-import scipy.linalg as sla
-import scipy.stats as ss
+# import scipy as sp  # useless
+from scipy import linalg
+from scipy import stats
 
 from scipy.linalg import svd
-from numpy.linalg import eig
+from scipy.linalg import eig
 # eig() of scipy.linalg necessitates using np.real_if_close().
 from scipy.linalg import sqrtm, inv, eigh
 
