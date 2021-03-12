@@ -26,8 +26,11 @@ except AttributeError:
 @contextlib.contextmanager
 def nonchalance(*exceptions):
     """Like contextlib.suppress(), but ignores (almost) all by default."""
-    with contextlib.suppress(exceptions or Exception):
+    if not exceptions:
+        exceptions = (Exception, )
+    with contextlib.suppress(*exceptions):
         yield
+
 
 @contextlib.contextmanager
 def suppress_w(warning):
