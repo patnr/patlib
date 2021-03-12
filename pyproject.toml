@@ -37,6 +37,16 @@ toml     = { version = "*", optional = true }
 tabulate = { version = "*", optional = true }
 tqdm     = { version = "*", optional = true }
 
+# pat
+#mpl_tools = "*"
+#struct-tools = "*"
+# pip is not able to install patlib in develop (-e) mode (atm).
+# Even w/o develop mode, the dependencies cannot be local.
+# Therefore this must be enabled only temporarily:
+mpl-tools = { path = "../../py/mpl-tools/", develop=true }
+struct-tools = { path = "../../py/struct-tools/" , develop=true }
+
+
 #jupyter  = { version = "*", optional = true }
 
 [tool.poetry.dev-dependencies]
@@ -46,6 +56,7 @@ tqdm     = { version = "*", optional = true }
 [tool.poetry.extras]
 math = ["matplotlib", "pyqt5", "scipy", "numpy"]
 misc = ["pyyaml", "toml", "tabulate", "tqdm"]
+pat  = ["mpl-tools", "struct-tools"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
