@@ -13,6 +13,9 @@ coz then I cannot selectively import a submodule (eg `patlib.math`)
 without executing the others.
 """
 
+# TODO: include imports from extras? Eg fig_layout.freshfig, AlignedDict, etc
+
+
 # from importlib import import_module
 from pathlib import Path as _Path # mangle to avoid cleaning up std.py:Path below.
 
