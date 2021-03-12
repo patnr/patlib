@@ -26,10 +26,10 @@ jedi = "<0.18" # ipython/issues/12740
 see = "*"
 
 # math
-matplotlib = { version = "*"       , optional = true }
-pyqt5      = { version = "*"       , optional = true }
-scipy      = { version = "*"       , optional = true }
-numpy      = { version = "^1.20.1" , optional = true } # 1.20 has stubs
+matplotlib = { version = "*"        , optional = true }
+pyqt5      = { version = "==5.15.2" , optional = true } # 5.15.3 breaks pyplot on mac
+scipy      = { version = "*"        , optional = true }
+numpy      = { version = "^1.20.1"  , optional = true } # 1.20 has stubs
 
 # misc
 pyyaml   = { version = "*", optional = true }
