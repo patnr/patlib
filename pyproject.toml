@@ -23,6 +23,7 @@ ipdb = "*"
 pudb = "*"
 ipython = "*"
 jedi = "<0.18" # ipython/issues/12740
+see = "*"
 
 # math
 matplotlib = { version = "*"       , optional = true }
