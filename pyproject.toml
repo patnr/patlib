@@ -25,6 +25,12 @@ ipython = "*"
 jedi = "<0.18" # ipython/issues/12740
 see = "*"
 
+# Newly added
+pre-commit = "*"
+pytest = "*"
+pytest-sugar = "*"
+pytest-clarity = "*"
+
 # math
 matplotlib = { version = "*",         optional = true }
 pyqt5      = { version = "==5.15.2",  optional = true } # 5.15.3 breaks pyplot on mac
