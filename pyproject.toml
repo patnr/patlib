@@ -49,7 +49,7 @@ tqdm     = { version = "*", optional = true }
 # NB: this is a bad idea. Too hacky. Some issues (there's probably more):
 # - Makes it difficult to keep track of dep
 # - Prevents PyPI publishing
-# - Prevents local pip installs 
+# - Prevents local pip installs
 #   (a separate issue from the fact that pip cannot install
 #   in editable/develop/-e model local projects defined via pyproject.toml)
 
