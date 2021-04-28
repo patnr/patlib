@@ -73,7 +73,7 @@ six = "*"
 
 [[package]]
 name = "decorator"
-version = "5.0.5"
+version = "5.0.7"
 description = "Decorators for Humans"
 category = "main"
 optional = false
@@ -97,7 +97,7 @@ python-versions = "*"
 
 [[package]]
 name = "identify"
-version = "2.2.2"
+version = "2.2.4"
 description = "File identification library for Python"
 category = "main"
 optional = false
@@ -108,7 +108,7 @@ license = ["editdistance-s"]
 
 [[package]]
 name = "importlib-metadata"
-version = "3.10.0"
+version = "4.0.1"
 description = "Read metadata from Python packages"
 category = "main"
 optional = false
@@ -206,19 +206,19 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "line-profiler"
-version = "3.2.0"
+version = "3.2.1"
 description = "Line-by-line profiler."
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-IPython = "*"
+IPython = {version = ">=0.13", markers = "python_version >= \"3.7\""}
 
 [package.extras]
-all = ["ipython", "cython", "scikit-build", "cmake", "ninja", "pytest", "pytest-cov", "coverage", "codecov", "ubelt"]
+all = ["cython", "scikit-build", "cmake", "ninja", "pytest (>=4.6.11)", "pytest-cov (>=2.10.1)", "coverage (>=5.3)", "codecov (>=2.0.15)", "ubelt (>=0.8.7)", "IPython (>=0.13,<=7.7.0)", "IPython (>=0.13)"]
 build = ["cython", "scikit-build", "cmake", "ninja"]
-tests = ["pytest", "pytest-cov", "coverage", "codecov", "ubelt"]
+tests = ["pytest (>=4.6.11)", "pytest-cov (>=2.10.1)", "coverage (>=5.3)", "codecov (>=2.0.15)", "ubelt (>=0.8.7)"]
 
 [[package]]
 name = "matplotlib"
@@ -238,7 +238,7 @@ python-dateutil = ">=2.7"
 
 [[package]]
 name = "nodeenv"
-version = "1.5.0"
+version = "1.6.0"
 description = "Node.js virtual environment builder"
 category = "main"
 optional = false
@@ -317,7 +317,7 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "pre-commit"
-version = "2.12.0"
+version = "2.12.1"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "main"
 optional = false
@@ -571,7 +571,7 @@ python-versions = "*"
 
 [[package]]
 name = "virtualenv"
-version = "20.4.3"
+version = "20.4.4"
 description = "Virtual Python Environment builder"
 category = "main"
 optional = false
@@ -615,7 +615,7 @@ misc = ["pyyaml", "toml", "tabulate", "tqdm"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "3778f0d409bac9cd67797cd4d1ba18cb5a973c1c8d295717245a2e0f89d21e8c"
+content-hash = "f5b8cb7e8bc3e6911f93a10287fd1732ed6698314cfe90be14f812f162118d09"
 
 [metadata.files]
 appdirs = [
@@ -651,8 +651,8 @@ cycler = [
     {file = "cycler-0.10.0.tar.gz", hash = "sha256:cd7b2d1018258d7247a71425e9f26463dfb444d411c39569972f4ce586b0c9d8"},
 ]
 decorator = [
-    {file = "decorator-5.0.5-py3-none-any.whl", hash = "sha256:b7157d62ea3c2c0c57b81a05e4569853e976a3dda5dd7a1cb86be78978c3c5f8"},
-    {file = "decorator-5.0.5.tar.gz", hash = "sha256:acda948ffcfe4bd0c4a57834b74ad968b91925b8201b740ca9d46fb8c5c618ce"},
+    {file = "decorator-5.0.7-py3-none-any.whl", hash = "sha256:945d84890bb20cc4a2f4a31fc4311c0c473af65ea318617f13a7257c9a58bc98"},
+    {file = "decorator-5.0.7.tar.gz", hash = "sha256:6f201a6c4dac3d187352661f508b9364ec8091217442c9478f1f83c003a0f060"},
 ]
 distlib = [
     {file = "distlib-0.3.1-py2.py3-none-any.whl", hash = "sha256:8c09de2c67b3e7deef7184574fc060ab8a793e7adbb183d942c389c8b13c52fb"},
@@ -663,12 +663,12 @@ filelock = [
     {file = "filelock-3.0.12.tar.gz", hash = "sha256:18d82244ee114f543149c66a6e0c14e9c4f8a1044b5cdaadd0f82159d6a6ff59"},
 ]
 identify = [
-    {file = "identify-2.2.2-py2.py3-none-any.whl", hash = "sha256:c7c0f590526008911ccc5ceee6ed7b085cbc92f7b6591d0ee5913a130ad64034"},
-    {file = "identify-2.2.2.tar.gz", hash = "sha256:43cb1965e84cdd247e875dec6d13332ef5be355ddc16776396d98089b9053d87"},
+    {file = "identify-2.2.4-py2.py3-none-any.whl", hash = "sha256:ad9f3fa0c2316618dc4d840f627d474ab6de106392a4f00221820200f490f5a8"},
+    {file = "identify-2.2.4.tar.gz", hash = "sha256:9bcc312d4e2fa96c7abebcdfb1119563b511b5e3985ac52f60d9116277865b2e"},
 ]
 importlib-metadata = [
-    {file = "importlib_metadata-3.10.0-py3-none-any.whl", hash = "sha256:d2d46ef77ffc85cbf7dac7e81dd663fde71c45326131bea8033b9bad42268ebe"},
-    {file = "importlib_metadata-3.10.0.tar.gz", hash = "sha256:c9db46394197244adf2f0b08ec5bc3cf16757e9590b02af1fca085c16c0d600a"},
+    {file = "importlib_metadata-4.0.1-py3-none-any.whl", hash = "sha256:d7eb1dea6d6a6086f8be21784cc9e3bcfa55872b52309bc5fad53a8ea444465d"},
+    {file = "importlib_metadata-4.0.1.tar.gz", hash = "sha256:8c501196e49fb9df5df43833bdb1e4328f64847763ec8a50703148b73784d581"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
@@ -724,7 +724,15 @@ kiwisolver = [
     {file = "kiwisolver-1.3.1.tar.gz", hash = "sha256:950a199911a8d94683a6b10321f9345d5a3a8433ec58b217ace979e18f16e248"},
 ]
 line-profiler = [
-    {file = "line_profiler-3.2.0.tar.gz", hash = "sha256:113a17d4023eff3008c807d895dec11f9ad872986edd0816fa523ecdeffe7bf8"},
+    {file = "line_profiler-3.2.1-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:eeee777b60ef2ae03180be06dded9c26dc7a0a7b02972dc06b692093f6e629ff"},
+    {file = "line_profiler-3.2.1-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:8462095c8f0de5a24769eee6a6ad2feae7e636003796a4acc202dfe561d10064"},
+    {file = "line_profiler-3.2.1-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:c540560c798d563d93e76ad07f0b13c66bfc07f7a8ecc5f187098494d0183191"},
+    {file = "line_profiler-3.2.1-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:78935b52ddedd1f4b22b982f12b8b61fc7d3df546990d90b82d9982c4d2673a6"},
+    {file = "line_profiler-3.2.1-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:aa7d7b1a009e2e4a11eb02bd9f9c4a35585fb07aec140c884359b6de3fc06a45"},
+    {file = "line_profiler-3.2.1-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:b9fa64c4863c5d12332fe827ff533cc0a1d64e596dc833b66d6e3fed094ec3bf"},
+    {file = "line_profiler-3.2.1-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:2864205db64165e3ef8c316835139070f63beff2101582c9905c59e611c49a67"},
+    {file = "line_profiler-3.2.1-cp39-cp39-manylinux2010_x86_64.whl", hash = "sha256:1d43fe2c19c79e66110055c02a1fe1cad4ba78e1800393f4c31ae738c0cdf668"},
+    {file = "line_profiler-3.2.1.tar.gz", hash = "sha256:af55c6678e803f9a84db694f35ac04878258ccf7036eb2407e44e4ea99f49655"},
 ]
 matplotlib = [
     {file = "matplotlib-3.4.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:7a54efd6fcad9cb3cd5ef2064b5a3eeb0b63c99f26c346bdcf66e7c98294d7cc"},
@@ -748,8 +756,8 @@ matplotlib = [
     {file = "matplotlib-3.4.1.tar.gz", hash = "sha256:84d4c4f650f356678a5d658a43ca21a41fca13f9b8b00169c0b76e6a6a948908"},
 ]
 nodeenv = [
-    {file = "nodeenv-1.5.0-py2.py3-none-any.whl", hash = "sha256:5304d424c529c997bc888453aeaa6362d242b6b4631e90f3d4bf1b290f1c84a9"},
-    {file = "nodeenv-1.5.0.tar.gz", hash = "sha256:ab45090ae383b716c4ef89e690c41ff8c2b257b85b309f01f3654df3d084bd7c"},
+    {file = "nodeenv-1.6.0-py2.py3-none-any.whl", hash = "sha256:621e6b7076565ddcacd2db0294c0381e01fd28945ab36bcf00f41c5daf63bef7"},
+    {file = "nodeenv-1.6.0.tar.gz", hash = "sha256:3ef13ff90291ba2a4a7a4ff9a979b63ffdd00a464dbe04acf0ea6471517a4c2b"},
 ]
 numpy = [
     {file = "numpy-1.20.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:e9459f40244bb02b2f14f6af0cd0732791d72232bbb0dc4bab57ef88e75f6935"},
@@ -833,8 +841,8 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 pre-commit = [
-    {file = "pre_commit-2.12.0-py2.py3-none-any.whl", hash = "sha256:029d53cb83c241fe7d66eeee1e24db426f42c858f15a38d20bcefd8d8e05c9da"},
-    {file = "pre_commit-2.12.0.tar.gz", hash = "sha256:46b6ffbab37986c47d0a35e40906ae029376deed89a0eb2e446fb6e67b220427"},
+    {file = "pre_commit-2.12.1-py2.py3-none-any.whl", hash = "sha256:70c5ec1f30406250b706eda35e868b87e3e4ba099af8787e3e8b4b01e84f4712"},
+    {file = "pre_commit-2.12.1.tar.gz", hash = "sha256:900d3c7e1bf4cf0374bb2893c24c23304952181405b4d88c9c40b72bda1bb8a9"},
 ]
 prompt-toolkit = [
     {file = "prompt_toolkit-3.0.18-py3-none-any.whl", hash = "sha256:bf00f22079f5fadc949f42ae8ff7f05702826a97059ffcc6281036ad40ac6f04"},
@@ -983,8 +991,8 @@ urwid = [
     {file = "urwid-2.1.2.tar.gz", hash = "sha256:588bee9c1cb208d0906a9f73c613d2bd32c3ed3702012f51efe318a3f2127eae"},
 ]
 virtualenv = [
-    {file = "virtualenv-20.4.3-py2.py3-none-any.whl", hash = "sha256:83f95875d382c7abafe06bd2a4cdd1b363e1bb77e02f155ebe8ac082a916b37c"},
-    {file = "virtualenv-20.4.3.tar.gz", hash = "sha256:49ec4eb4c224c6f7dd81bb6d0a28a09ecae5894f4e593c89b0db0885f565a107"},
+    {file = "virtualenv-20.4.4-py2.py3-none-any.whl", hash = "sha256:a935126db63128861987a7d5d30e23e8ec045a73840eeccb467c148514e29535"},
+    {file = "virtualenv-20.4.4.tar.gz", hash = "sha256:09c61377ef072f43568207dc8e46ddeac6bcdcaf288d49011bda0e7f4d38c4a2"},
 ]
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
