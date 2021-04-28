@@ -206,6 +206,20 @@ def sorted_human(lst):
 
 
 def find_1st_ind(xx):
+    """Same as `np.nonzero(xx)[0][0]`, but lazy, so maybe faster.
+
+    Why might this be faster, even though it's pure python?
+    Because Numpy is "fundamentally a non-lazy computing platform"
+    [Ref](https://github.com/numpy/numpy/issues/2269)
+
+    This (and related stuff) being of frequent use, but located here
+    (in this obscure library), you might consider vendorising this.
+    Also consider:
+    >>> list(xx).index(val)
+    >>> np.arange(len(xx))[xx==val]
+
+    [Ref](https://stackoverflow.com/a/36837176)
+    """
     try:
         return next(k for k, x in enumerate(xx) if x)
     except StopIteration:
