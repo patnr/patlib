@@ -32,7 +32,7 @@ pytest-sugar = "*"
 pytest-clarity = "*"
 
 # math
-matplotlib = { version = "*",         optional = true }
+matplotlib = { version = "^3.4",      optional = true } # 3.4 has subxlabel
 pyqt5      = { version = "==5.15.2",  optional = true } # 5.15.3 breaks pyplot on mac
 scipy      = { version = "*",         optional = true }
 numpy      = { version = "^1.20.1",   optional = true } # 1.20 has stubs
