@@ -149,7 +149,7 @@ def sub_run(*args, check=True, capture_output=True, text=True, **kwargs):
     """
 
     x = subprocess.run(*args, **kwargs,
-            check=check, capture_output=capture_output, text=text)
+                       check=check, capture_output=capture_output, text=text)
 
     if capture_output:
         return x.stdout
