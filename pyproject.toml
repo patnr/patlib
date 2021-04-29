@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "patlib"
-version = "0.2.7"
+version = "0.2.8"
 description = "A collection of tools."
 license = "MIT"
 authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]
@@ -14,54 +14,58 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.7"
 
-# Minimal tools
-line_profiler = "*"
-ipdb = "*"
-# This pdbpp rev includes bugfix to pdbpp/issues/408.
-# As of Jan 2021, no release exists containing this bugfix.
-#pdbpp = { git = "https://github.com/pdbpp/pdbpp.git", rev = "b62a338" }
-pudb = "*"
-ipython = "*"
-jedi = "<0.18" # ipython/issues/12740
-see = "*"
+scipy      = {version="*",         optional=true}
+numpy      = {version="^1.20.1",   optional=true}
+# ... coz 1.20 has stubs
+matplotlib = {version="^3.4",      optional=true}
+# ... coz 3.4 has subxlabel
 
-# Newly added
-pre-commit = "*"
-pytest = "*"
-pytest-sugar = "*"
-pytest-clarity = "*"
 
-# math
-matplotlib = { version = "^3.4",      optional = true } # 3.4 has subxlabel
-pyqt5      = { version = "==5.15.2",  optional = true } # 5.15.3 breaks pyplot on mac
-scipy      = { version = "*",         optional = true }
-numpy      = { version = "^1.20.1",   optional = true } # 1.20 has stubs
+# extras: mydev
+ipython        = {version="^7.20",    optional=true}
+# ... coz 7.19 was incompatible with Jedi 0.18
+pyqt5          = {version="!=5.15.3", optional=true}
+# ... coz 5.15.3 breaks pyplot on mac
+pre-commit     = {version="*",        optional=true}
+line_profiler  = {version="*",        optional=true}
+see            = {version="*",        optional=true}
+# pytest:
+pytest         = {version="*",        optional=true}
+pytest-sugar   = {version="*",        optional=true}
+pytest-clarity = {version="*",        optional=true}
+# debugging:
+ipdb           = {version="*",        optional=true}
+pudb           = {version="*",        optional=true}
+pysnooper      = {version="*",        optional=true}
+# Working pdb++ (ref pdbpp/issues/408).
+# Add to your local pyproject.toml (if not publishing to pypi) to use.
+# pdbpp = { git = "https://github.com/pdbpp/pdbpp.git", rev = "b62a338" }
 
-# misc
-pyyaml   = { version = "*", optional = true }
-toml     = { version = "*", optional = true }
-tabulate = { version = "*", optional = true }
-tqdm     = { version = "*", optional = true }
+# extras: misc
+pyyaml   = {version="*", optional=true}
+toml     = {version="*", optional=true}
+tabulate = {version="*", optional=true}
+tqdm     = {version="*", optional=true}
+pandas   = {version="*", optional=true}
 
-# pat
-#mpl-tools = { path = "../../py/mpl-tools/", develop=true }
-#struct-tools = { path = "../../py/struct-tools/", develop=true }
-# NB: this is a bad idea. Too hacky. Some issues (there's probably more):
+# extras: pat
+# NB: This is a bad idea. Too hacky. Some issues (∃ probs more):
 # - Makes it difficult to keep track of dep
 # - Prevents PyPI publishing
 # - Prevents local pip installs
 #   (a separate issue from the fact that pip cannot install
 #   in editable/develop/-e model local projects defined via pyproject.toml)
-
-#jupyter  = { version = "*", optional = true }
+# mpl-tools = { path = "../../py/mpl-tools/", develop=true }
+# struct-tools = { path = "../../py/struct-tools/", develop=true }
 
 [tool.poetry.dev-dependencies]
-
-#pre-commit = "*"
+# NB: packages hereunder are not installed by having patlib as a dependency.
 
 [tool.poetry.extras]
-math = ["matplotlib", "pyqt5", "scipy", "numpy"]
-misc = ["pyyaml", "toml", "tabulate", "tqdm"]
+mydev = ["ipython", "pyqt5", "pre-commit", "line_profiler", "see",
+      "pytest", "pytest-sugar", "pytest-clarity",
+      "ipdb", "pudb", "pysnooper"]
+misc = ["pyyaml", "toml", "tabulate", "tqdm", "pandas"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
