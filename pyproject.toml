@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "patlib"
-version = "0.2.9"
+version = "0.3.1"
 description = "A collection of tools."
 license = "MIT"
 authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]
