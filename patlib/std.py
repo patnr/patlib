@@ -25,65 +25,33 @@ except AttributeError:
 
 @contextlib.contextmanager
 def nonchalance(*exceptions):
-    """Like contextlib.suppress(), but ignores (almost) all by default."""
+    """Like `contextlib.suppress()`, but ignores (almost) all by default.
+
+    For example, `KeyboardInterrupt` is not suppressed.
+    """
     if not exceptions:
         exceptions = (Exception, )
     with contextlib.suppress(*exceptions):
         yield
 
 
-@contextlib.contextmanager
-def suppress_w(warning):
-    """Suppress warning messages of class `warning`."""
-    warnings.simplefilter("ignore",warning)
-    yield
-    warnings.simplefilter("default",warning)
+def do_once(fun):
+    """Decorator to function to tell it to only run once.
 
-# Raise exception on warning
-#warnings.filterwarnings('error',category=RuntimeWarning)
-#warnings.filterwarnings('error',category=np.VisibleDeprecationWarning)
+    A frequent use is to replace the stdlib `warnings` module because it
 
-
-@contextlib.contextmanager
-def rewrite(fname):
-    """File-editor contextmanager.
-
-    Example:
-
-    >>> with rewrite("myfile.txt") as lines:
-    >>>     for i, line in enumerate(lines):
-    >>>         lines[i] = line.replace("old","new")
+    - has [this severe bug](https://stackoverflow.com/questions/66388579)
+    - also prints the source line where the warning was produced,
+      which is ugly (although a formatter can be provided to fix this).
     """
-    with open(fname, 'r') as f:
-        lines = [line for line in f]
-
-    yield lines
-
-    with open(fname, 'w') as f:
-        f.write("".join(lines))
-
-
-class Timer():
-    """Timer context manager.
-
-    Example::
-
-    >>> with Timer('<description>'):
-    >>>     time.sleep(1.23)
-    [<description>] Elapsed: 1.23
-    """
-
-    def __init__(self, name=None):
-        self.name = name
-
-    def __enter__(self):
-        self.tstart = time.time()
-
-    def __exit__(self, type, value, traceback):
-        # pass # Turn off timer messages
-        if self.name:
-            print('[%s]' % self.name, end=' ')
-        print('Elapsed: %s' % (time.time() - self.tstart))
+    def new(*args, **kwargs):
+        if new._ALREADY_DONE:
+            return None  # do nothing
+        else:
+            new._ALREADY_DONE = True
+            return fun(*args, **kwargs)
+    new._ALREADY_DONE = False
+    return new
 
 
 def create_logger(name,
@@ -135,6 +103,48 @@ def create_logger(name,
         logger.addHandler(fh)
 
     return logger
+
+
+@contextlib.contextmanager
+def rewrite(fname):
+    """File-editor contextmanager.
+
+    Example:
+
+    >>> with rewrite("myfile.txt") as lines:
+    >>>     for i, line in enumerate(lines):
+    >>>         lines[i] = line.replace("old","new")
+    """
+    with open(fname, 'r') as f:
+        lines = [line for line in f]
+
+    yield lines
+
+    with open(fname, 'w') as f:
+        f.write("".join(lines))
+
+
+class Timer():
+    """Timer context manager.
+
+    Example::
+
+    >>> with Timer('<description>'):
+    >>>     time.sleep(1.23)
+    [<description>] Elapsed: 1.23
+    """
+
+    def __init__(self, name=None):
+        self.name = name
+
+    def __enter__(self):
+        self.tstart = time.time()
+
+    def __exit__(self, type, value, traceback):
+        # pass # Turn off timer messages
+        if self.name:
+            print('[%s]' % self.name, end=' ')
+        print('Elapsed: %s' % (time.time() - self.tstart))
 
 
 def sub_run(*args, check=True, capture_output=True, text=True, **kwargs):
@@ -224,19 +234,3 @@ def find_1st_ind(xx):
         return next(k for k, x in enumerate(xx) if x)
     except StopIteration:
         return None
-
-
-def do_once(fun):
-    """Decorator to function to tell it to only run once.
-
-    NB: If you want to print/log messages, but only once,
-    use the stdlib warnings module instead.
-    """
-    def new(*args, **kwargs):
-        if new._ALREADY_DONE:
-            return None  # do nothing
-        else:
-            new._ALREADY_DONE = True
-            return fun(*args, **kwargs)
-    new._ALREADY_DONE = False
-    return new
