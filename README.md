@@ -19,4 +19,16 @@ Purposes:
   NB: Maybe this is a bad idea; maybe I will forget to include e.g.
   numpy when publishing the other project.
 
-- Provide pylab replacement: from patlib.all import *
+- Provide pylab replacement
+
+
+Poetry workflow
+
+- Init project
+- Abandom project (tmp)
+- Resume project
+- Publish/realease PyPI/GitHub
+- Add dependencies (by poetry or pyproject.toml)
+- Update dependencies
+- Virtual env management
+- Pre-commit, Lint, Test, CI, Docs
