@@ -55,22 +55,25 @@ def do_once(fun):
 
 
 def create_logger(name,
-                  screen_level=logging.INFO,
-                  file_level=logging.DEBUG,
+                  level_for_screen=logging.INFO,
+                  level_for_file=logging.DEBUG,
                   filename="mylog", mode="w"):
-    """Create logger (this is surprisingly complicated).
+    """Create non-root logger.
+
+    The root logger is created by `basicConfig` or whenever calling
+    the logging module functions directly. For larger apps, you'd
+    usually want to distinguish your logs from IPython's (e.g.),
+    so you want to create another, **named** logger.
+    Surprisingly, there is no built-in helper for this, so here's one.
+    [Ref](https://stackoverflow.com/a/29087645)
 
     NB: Changing the parameters only works at start-up.
+    NB: If run via `IPython`, messages get appended, even when `mode` is "w".
 
-    Note: if running in IPython, log messages get appended,
-    even when `mode` is "w".
-
-    - Log-levels above `scree_level` get printed to the terminal.
-    - Other messages to to the file `filename`.
+    - Log-levels above `level_for_screen` get printed to stdout.
+    - Log-levels above `level_for_file` get printed to file "filename".
     - `NOTSET` messages get passed to the root level,
       and discarded (unless the root level logger is instantiated).
-
-    [Ref](https://stackoverflow.com/a/29087645/38281)
 
     Example:
     >>> logger = create_logger(__name__)
@@ -82,11 +85,11 @@ def create_logger(name,
 
     # create file handler which logs even debug messages
     fh = logging.FileHandler(filename, mode)
-    fh.setLevel(logging.DEBUG)
+    fh.setLevel(level_for_file)
 
     # create console handler with a higher log level
     ch = logging.StreamHandler(stream=sys.stdout)
-    ch.setLevel(screen_level)
+    ch.setLevel(level_for_screen)
 
     # create formatter and add it to the handlers
     formatter = logging.Formatter(
