@@ -40,10 +40,8 @@ def do_once(fun):
 
     A frequent use is to replace the stdlib `warnings` module because it
 
-    - Has [this severe bug](https://stackoverflow.com/questions/66388579).
-      BTW the fix offered by `np.testing.suppress_warnings` is for the issue
-      whose patching actually caused this bug.
-    - Also prints the source line where the warning was produced,
+    - has [this severe bug](https://stackoverflow.com/questions/66388579)
+    - also prints the source line where the warning was produced,
       which is ugly (although a formatter can be provided to fix this).
     """
     def new(*args, **kwargs):
