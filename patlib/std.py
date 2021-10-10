@@ -68,7 +68,6 @@ def create_logger(name,
     [Ref](https://stackoverflow.com/a/29087645)
 
     NB: Changing the parameters only works at start-up.
-    NB: If run via `IPython`, messages get appended, even when `mode` is "w".
 
     - Log-levels above `level_for_screen` get printed to stdout.
     - Log-levels above `level_for_file` get printed to file "filename".
