@@ -17,7 +17,7 @@ importlib-metadata = {version = "^1.0", python = "<3.8"}
 
 scipy      = {version="*",         optional=true}
 numpy      = {version="^1.19.5",   optional=true}
-# ... 1.20 has stubs
+# ... 1.20 has stubs, so don't need data-science-types
 # ... but Colab has 1.19.5
 matplotlib = {version="^3.2.2",      optional=true}
 # ... coz 3.4 has subxlabel
@@ -67,10 +67,11 @@ toml     = {version="*", optional=true}
 tabulate = {version="*", optional=true}
 tqdm     = {version="*", optional=true}
 pandas   = {version="*", optional=true}
+seaborn  = {version="^0.11.1", optional=true}
 
 # extras: pat
 # NB: This is a bad idea. Too hacky. Some issues (∃ probs more):
-# - Makes it difficult to keep track of dep
+# - Prevents you from specifying other versions of them.
 # - Prevents PyPI publishing
 # - Prevents local pip installs
 #   (a separate issue from the fact that pip cannot install
@@ -85,7 +86,7 @@ pandas   = {version="*", optional=true}
 mydev = ["ipython", "pyqt5", "pre-commit", "line_profiler", "see",
       "pytest", "pytest-sugar", "pytest-clarity",
       "ipdb", "pudb", "pysnooper"]
-misc = ["pyyaml", "toml", "tabulate", "tqdm", "pandas"]
+misc = ["pyyaml", "toml", "tabulate", "tqdm", "pandas", "seaborn"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
