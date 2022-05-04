@@ -61,6 +61,8 @@ pysnooper      = {version="*",        optional=true}
 #flake8-builtins = "*"
 #pep8-naming = "*"
 
+# TODO: include scalene or yappi profiler?
+
 # extras: misc
 pyyaml   = {version="*", optional=true}
 toml     = {version="*", optional=true}

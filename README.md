@@ -1,13 +1,13 @@
 # patlib
 
-Purposes:
+Should not be used in production code. Purposes:
 
+- Expanded snippet (or "tips and tricks") library.
 - Share tools across my projects, such as DAPPER.
-- Define optional dependencies to setup my dev. environments by
-  "inheriting" from here. The aim is that I only need to keep
-  pylib up to date (e.g. pinning buggy Jedi or pdbpp),
-  rather than the `pyproject.toml` of each and every project.
+- Provide common, version-controlled (and versioned) source
+  of dependency specifications for various projects.
 
+  Example:
   ```toml
   [tool.poetry.dev-dependencies]
   # Either:
@@ -16,19 +16,5 @@ Purposes:
   patlib = {path = "../../py/patlib", extras = ["mydev", "misc"], develop=true}
   ```
 
-  NB: Maybe this is a bad idea; maybe I will forget to include e.g.
-  numpy when publishing the other project.
-
-- Provide pylab replacement
-
-
-Poetry workflow
-
-- Init project
-- Abandom project (tmp)
-- Resume project
-- Publish/realease PyPI/GitHub
-- Add dependencies (by poetry or pyproject.toml)
-- Update dependencies
-- Virtual env management
-- Pre-commit, Lint, Test, CI, Docs
+  NB: Not sure if good idea.
+  Maybe you forget numpy when publishing a "dependant" project.

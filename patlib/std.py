@@ -149,25 +149,6 @@ class Timer():
         print('Elapsed: %s' % (time.time() - self.tstart))
 
 
-def sub_run(*args, check=True, capture_output=True, text=True, **kwargs):
-    """`subprocess.run`, with changed defaults, returning stdout.
-
-    Example:
-    >>> gitfiles = sub_run(["git", "ls-tree", "-r", "--name-only", "HEAD"])
-    >>> # Alternatively:
-    >>> # gitfiles = sub_run("git ls-tree -r --name-only HEAD", shell=True)
-    >>> # Only .py files:
-    >>> gitfiles = [f for f in gitfiles.split("\n") if f.endswith(".py")]
-    """
-
-    x = subprocess.run(*args, **kwargs,
-                       check=check, capture_output=capture_output, text=text)
-
-    if capture_output:
-        return x.stdout
-
-
-
 @contextlib.contextmanager
 def set_tmp(obj, attr, val):
     """Temporarily set an attribute.
@@ -218,14 +199,16 @@ def sorted_human(lst):
 
 
 def find_1st_ind(xx):
-    """Same as `np.nonzero(xx)[0][0]`, but lazy, so maybe faster.
+    """Same as `np.flatnonzero(xx)[0]`, but lazy, so *maybe* faster.
 
     Why might this be faster, even though it's pure python?
     Because Numpy is "fundamentally a non-lazy computing platform"
-    [Ref](https://github.com/numpy/numpy/issues/2269)
+    [Ref](https://github.com/numpy/numpy/issues/2269),
+    and should always return potentially *multiple* indices.
 
     This (and related stuff) being of frequent use, but located here
     (in this obscure library), you might consider vendorising this.
+
     Also consider:
     >>> list(xx).index(val)
     >>> np.arange(len(xx))[xx==val]

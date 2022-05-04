@@ -1,12 +1,4 @@
-"""A small, personal, `pylab`.
-
-Its purpose is to provide shorthands,
-and so should not be used in production code.
-It may be loaded with wildcard, eg:
-
-- from patlib.all import *  # executes all submodules
-- from patlib.math import * # won't execute the other submodules
-"""
+"""A small, personal, snippet library."""
 
 try:
     import importlib.metadata as importlib_metadata
