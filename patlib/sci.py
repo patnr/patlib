@@ -3,6 +3,26 @@
 import numpy as np
 
 
+def curved_space(start, end, N, curvature):
+    """A selected segment of `logspace`, affinely transformed to `[start,end]`.
+
+    Special values for `curvature`:
+    - ` 0`: `linspace(start,end,N)`
+    - `+1`: `geomspace(start,end,N)`. Convex, regardless of whether `start < end`.
+    - `-1`: Like `+1` but reflected (i.e. concave) about straight line "y=x".
+
+    Example:
+    >>> curved_space(1e-1, 1e+3, 201, curvature)
+    """
+    if -1e-12 < curvature < 1e-12:
+        # Special case
+        space01 = np.linspace(0, 1, N)
+    else:
+        fact = (end / start)**curvature
+        space01 = (np.geomspace(1, fact, N) - 1) / (fact - 1)
+    return start + (end - start) * space01
+
+
 def uniquish(a, rtol=1e-05, atol=1e-08):
     """Return unique elements of a.
 
