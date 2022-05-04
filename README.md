@@ -6,6 +6,8 @@ Should not be used in production code. Purposes:
 - Share tools across my projects, such as DAPPER.
 - Provide common, version-controlled (and versioned) source
   of dependency specifications for various projects.
+  NB: Not sure if good idea.
+  Maybe you forget numpy when publishing a "dependant" project.
 
   Example:
   ```toml
@@ -16,5 +18,5 @@ Should not be used in production code. Purposes:
   patlib = {path = "../../py/patlib", extras = ["mydev", "misc"], develop=true}
   ```
 
-  NB: Not sure if good idea.
-  Maybe you forget numpy when publishing a "dependant" project.
+  Also note that `pip>=21.3` supports editable installs,
+  but this also requires that you have a recent `poetry` installed on your system.

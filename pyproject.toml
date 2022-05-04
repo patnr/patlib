@@ -72,12 +72,8 @@ pandas   = {version="*", optional=true}
 seaborn  = {version="^0.11.1", optional=true}
 
 # extras: pat
-# NB: This is a bad idea. Too hacky. Some issues (∃ probs more):
-# - Prevents you from specifying other versions of them.
-# - Prevents PyPI publishing
-# - Prevents local pip installs
-#   (a separate issue from the fact that pip cannot install
-#   in editable/develop/-e model local projects defined via pyproject.toml)
+# NB: This is a bad idea. Too hacky. Prevents PyPI publishing (if installed as editable),
+#     or editable installs (if installed from pypi). ∃ probs more issues too.
 # mpl-tools = { path = "../../py/mpl-tools/", develop=true }
 # struct-tools = { path = "../../py/struct-tools/", develop=true }
 
