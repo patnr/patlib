@@ -213,7 +213,11 @@ def find_1st_ind(xx):
     >>> list(xx).index(val)
     >>> np.arange(len(xx))[xx==val]
 
+    However, for non-np uses, readability and flexibility,
+    you should probably use a for/break/else construct.
+
     [Ref](https://stackoverflow.com/a/36837176)
+    [Ref](https://stackoverflow.com/a/35370041)
     """
     try:
         return next(k for k, x in enumerate(xx) if x)

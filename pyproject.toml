@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "patlib"
-version = "0.3.6"
+version = "0.3.7"
 description = "A collection of tools."
 license = "MIT"
 authors = ["patricknraanes <patrick.n.raanes@gmail.com>"]
@@ -16,13 +16,8 @@ python = "^3.7"
 importlib-metadata = {version = "^1.0", python = "<3.8"}
 
 scipy      = {version="*",         optional=true}
-numpy      = {version="^1.19.5",   optional=true}
-# ... 1.20 has stubs, so don't need data-science-types
-# ... but Colab has 1.19.5
-matplotlib = {version="^3.2.2",      optional=true}
-# ... coz 3.4 has subxlabel
-# ... but Colab has 3.2.2
-
+numpy      = {version="*",         optional=true}
+matplotlib = {version="*",         optional=true}
 
 # extras: mydev
 ipython        = {version="^7.20",    optional=true}
